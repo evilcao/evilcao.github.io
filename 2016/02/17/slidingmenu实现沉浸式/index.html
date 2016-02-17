@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="SlidingMenu," />
 
 
 
@@ -57,15 +57,20 @@
 
 
 
-<meta name="description" content="曹剑的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CaoJian">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="#关于沉浸式  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。  具体实现可以参考hongyang大神的文章:http://blog.csdn.net/lmj623565791/article/details/48649563
+#关于slidingmenu这是一个很著名的实现侧滑菜单的库。github地址:https://github.com/jfeinstei">
+<meta property="og:type" content="article">
+<meta property="og:title" content="slidingmenu实现沉浸式">
+<meta property="og:url" content="http://yoursite.com/2016/02/17/slidingmenu实现沉浸式/index.html">
 <meta property="og:site_name" content="CaoJian">
-<meta property="og:description" content="曹剑的博客">
+<meta property="og:description" content="#关于沉浸式  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。  具体实现可以参考hongyang大神的文章:http://blog.csdn.net/lmj623565791/article/details/48649563
+#关于slidingmenu这是一个很著名的实现侧滑菜单的库。github地址:https://github.com/jfeinstei">
+<meta property="og:image" content="http://img.blog.csdn.net/20160217165746838">
+<meta property="og:updated_time" content="2016-02-17T09:32:39.971Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CaoJian">
-<meta name="twitter:description" content="曹剑的博客">
+<meta name="twitter:title" content="slidingmenu实现沉浸式">
+<meta name="twitter:description" content="#关于沉浸式  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。  具体实现可以参考hongyang大神的文章:http://blog.csdn.net/lmj623565791/article/details/48649563
+#关于slidingmenu这是一个很著名的实现侧滑菜单的库。github地址:https://github.com/jfeinstei">
 
 
 
@@ -83,7 +88,7 @@
   };
 </script>
 
-  <title> CaoJian </title>
+  <title> slidingmenu实现沉浸式 | CaoJian </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -102,9 +107,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -183,24 +186,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-      
-      
-        
-        
-        
-      
-
-      
-    
-
-    
-      
 
   
   
@@ -220,219 +208,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/02/17/获取View的截图与视图镜像/" itemprop="url">
-                  View的截图与视图镜像
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T17:33:00+08:00" content="2016-02-17">
-              2016-02-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/17/获取View的截图与视图镜像/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/获取View的截图与视图镜像/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#View.getDrawingCache（）<br>所有的View都有该方法，该方法是获取view对象的绘制镜像(Bitmap)。<br>需要注意的是，在需要获取view的视图镜像时若view的绘制镜像的大小超过了系统默认值时就会返回null。<br>以下是view.getDrawingCache()的一部分代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (width &lt;= <span class="number">0</span> || height &lt;= <span class="number">0</span> ||</span><br><span class="line">         (width * height * (opaque &amp;&amp; !translucentWindow ? <span class="number">2</span> : <span class="number">4</span>) &gt;</span><br><span class="line">                 ViewConfiguration.get(mContext).getScaledMaximumDrawingCacheSize())) &#123;</span><br><span class="line">                destroyDrawingCache();</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>其中getScaledMaximumDrawingCacheSize()就是获取系统允许的最大缓存，width <em> height </em> (opaque &amp;&amp; !translucentWindow ? 2 : 4)就是计算绘制镜像所需的大小。<br>  注意： WebView默认是不能获取绘图镜像的。需要mWebView.setDrawingCacheEnabled(true)后才能通过该方法获取缓存。</p>
-<p>#通过绘制图像绕过大小限制<br>  这种方法的好处是你想要在镜像上额外添加图标或者水印都比较方便，而且可以自定图像精度<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">getBitmapFromView</span><span class="params">(View view, <span class="keyword">boolean</span> isParemt)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">if</span> (view== <span class="keyword">null</span>) &#123;  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="comment">//创建一个和view同样宽高的空bitmap</span></span><br><span class="line">        Bitmap viewshot = Bitmap.createBitmap(view.getWidth(), view.getHeight(), HDConstantSet.BITMAP_QUALITY);  </span><br><span class="line">        <span class="comment">//将view绘制上去</span></span><br><span class="line">        Canvas c = <span class="keyword">new</span> Canvas(viewshot);  </span><br><span class="line">        c.translate(-view.getScrollX(), -view.getScrollY());  </span><br><span class="line">        view.draw(c);  </span><br><span class="line">        <span class="keyword">return</span> viewshot ;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>#测量View后主动创建绘制镜像<br>这种方式是调用系统的方法<br><figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="component">public static Bitmap getBitmapFromView(View view)&#123;</span><br><span class="line">   　　　view<span class="string">.measure(MeasureSpec.makeMeasureSpec(0</span>, MeasureSpec<span class="string">.UNSPECIFIED)</span>, MeasureSpec<span class="string">.makeMeasureSpec(0</span>, MeasureSpec<span class="string">.UNSPECIFIED))</span>;</span><br><span class="line">        view<span class="string">.layout(0</span>, 0, view<span class="string">.getMeasuredWidth()</span>, view<span class="string">.getMeasuredHeight())</span>;</span><br><span class="line">        //该方法有另一个重载，view<span class="string">.buildDrawingCache(true)</span>;表示会对镜像进行缩放。</span><br><span class="line">        view<span class="string">.buildDrawingCache()</span>;</span><br><span class="line">        Bitmap bitmap = view<span class="string">.getDrawingCache()</span>;</span><br><span class="line">　　　　 return bitmap;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>#web的截屏<br>安卓提供了webView.capturePicture()来获取其镜像。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**  </span><br><span class="line"> * 截取webView快照(webView加载的整个内容的大小)  </span><br><span class="line"> * @param webView  </span><br><span class="line"> * @return  </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="label">private</span> <span class="keyword">Bitmap </span>captureWebView(WebView webView)&#123;  </span><br><span class="line">    Picture snapShot = webView.capturePicture()<span class="comment">;  </span></span><br><span class="line">    <span class="keyword">Bitmap </span><span class="keyword">bmp </span>= <span class="keyword">Bitmap.createBitmap(snapShot.getWidth(),snapShot.getHeight(), </span><span class="keyword">Bitmap.Config.ARGB_8888); </span> </span><br><span class="line">    Canvas canvas = new Canvas(<span class="keyword">bmp); </span> </span><br><span class="line">    snapShot.draw(canvas)<span class="comment">;  </span></span><br><span class="line">    return <span class="keyword">bmp; </span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>#对activity截屏<br>  我们知道activity对应的视图对象就是activity.getWindow().getDecorView()，用上述的方法就可以获取截图了。</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/17/WebView 小结/" itemprop="url">
-                  WebView小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T17:32:47+08:00" content="2016-02-17">
-              2016-02-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/17/WebView 小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/WebView 小结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#android调用JS<br>使用webview.loadUrl(String jsstring)来使android调用javascrip方法。这种调用方式是没有返回值的。<br>string的格式为：<br>    有参  javascript:js方法名(‘“+参数1+”‘,’”+参数2+”‘,’” + 参数3+ “”)”<br>    无参  javascript:js方法名()</p>
-<pre><code>注意，一旦调用webview.loadUrl(jsString)方法，webview将会立即尝试调用js，也就是说如果调用该方法时网页还未加载完毕，那么加载调用失败。如果需要在网页加载后传递参数，那个可以webview.setWebViewClient(webViewClient)的onPageFinished(view, url)方法中调用js以传递数据。
-</code></pre><hr>
-<p>#JS调用android<br>使用webView.addJavascriptInterface(Object object,String name)方法来添加可以被js调用的接口。其中，object为自定义的接口类(此接口非彼接口)，name为提供的接口的名字。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例如，webView.addJavascriptInterface(new JS,"js");</span></span><br><span class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">JS</span></span>&#123;</span><br><span class="line">	<span class="comment">//这是无参有返回的调用</span></span><br><span class="line">        <span class="annotation">@JavascriptInterface</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getParams</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> params;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//这是有参无返回的调用</span></span><br><span class="line">        <span class="annotation">@JavascriptInterface</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showString</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//这是有参有返回的调用</span></span><br><span class="line">        <span class="annotation">@JavascriptInterface</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">showString</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">	        <span class="keyword">return</span> str;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>在js中就是使用 window.js.getParames()就能调用android中的JS中的getParams()方法。</p>
-<pre><code>注意: 
-1. 在4.2里，对addJavascriptInterface()方法做了安全限制，如果需要兼容4.2版本，那么需要在JS的接口类的方法类加上@JavascriptInterface的注解。在添加这个注释后，js的alert()等方法均会被拦截。
-2. andorid调用js平均需要100-200毫秒，而js调用安卓需要40-50毫秒。
-3. 不要对js接口类做混淆。否则网页将调用不了相关方法。
-</code></pre><hr>
-<p>#WebViewClient<br>该类主要处理网页的各种通知事件的。<br>主要的方法有：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//该方法在网页加载完毕后回调，此时网页内的js等已经加载完成</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageFinished</span><span class="params">(WebView view, String url)</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">//该方法在网页加载错误后回调</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceivedError</span><span class="params">(WebView view, <span class="keyword">int</span> errorCode, String description, String failingUrl)</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">//是否对链接跳转进行拦截，返回true表示要自己对跳转进行处理。且在此webview内进行加载</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldOverrideUrlLoading</span><span class="params">(WebView view, String url)</span> </span>&#123;</span><br></pre></td></tr></table></figure>
-<pre><code>注意:
-1.可以通过shouldOverrideUrlLoading(WebView view, String url)，重载url的方式来传递数据给web页面。
-</code></pre><hr>
-<p>#WebChromeClient<br>该类主要处理网页的对话框，标题，加载进度等。<br>主要方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载进度的回调。pogress为加载进度</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onProgressChanged</span><span class="params">(WebView view, <span class="keyword">int</span> progress)</span> </span>&#123; &#125;</span><br><span class="line"><span class="comment">//js弹窗的回调。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onJsAlert</span><span class="params">(WebView view, String url, String message, JsResult result)</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">//js弹窗的确认被点击的回调</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onJsConfirm</span><span class="params">(WebView view, String url, String message, JsResult result)</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<pre><code>注意
-1.如果在onJsAlert()方法中使用android的弹出对话框，在点击确定后需要调用result.confirm()方法来通知js对话框已被点击，否则后续的js将不会执行。
-</code></pre>
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/17/slidingmenu实现沉浸式/" itemprop="url">
-                  slidingmenu实现沉浸式
-                </a>
+                slidingmenu实现沉浸式
               
             
           </h1>
@@ -477,9 +253,7 @@
       
 
       
-        
-          
-            <p>#关于沉浸式<br>  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。<br>  具体实现可以参考hongyang大神的文章:<link><a href="http://blog.csdn.net/lmj623565791/article/details/48649563" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/48649563</a></p>
+        <p>#关于沉浸式<br>  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。<br>  具体实现可以参考hongyang大神的文章:<link><a href="http://blog.csdn.net/lmj623565791/article/details/48649563" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/48649563</a></p>
 <p>#关于slidingmenu<br>这是一个很著名的实现侧滑菜单的库。github地址:<link><a href="https://github.com/jfeinstein10/SlidingMenu" target="_blank" rel="external">https://github.com/jfeinstein10/SlidingMenu</a></p>
 <p>#使slidingmenu实现沉浸式<br>当我们使用slidingmenu的情况下，如果slidingmenu的顶部和沉浸式状态栏的颜色不一致，那么会使侧滑显得十分丑陋。我们想要的是使slidingmenu也能够沉浸入状态栏，使slidingmenu的滑动也能在状态栏中实现。类似于qq、知乎中滑动菜单的效果。</p>
 <p>  我们知道，沉浸式的状态栏的实现，实际上是使系统状态栏为背景为透明，然后在其区域添加一个view(该view的显示由我们自己定义)，这样就能在状态栏添加上我们想要的背景。对于slidingmenu，其内部是使用ViewAbove和ViewBehind来分代表主页面视图和菜单视图，分别对应menu.getContent()，menu.getMenu（）。</p>
@@ -490,29 +264,45 @@
 <p>由于设置为透明后，activity和slidingmenu中的内容会顶到菜单栏，所以需要手动设置一个透明的高度将内容重新顶回状态栏下方<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取状态栏高度</span></span><br><span class="line">       <span class="keyword">int</span> height=UIUtils.getStatusBarHeight(getActivity());</span><br><span class="line">       <span class="comment">//获取activity和menu中的占位view。两者代码一致</span></span><br><span class="line">       View v=view.findViewById(R.id.stras_padding);</span><br><span class="line">       <span class="comment">//设置占位view的高度为状态栏高度</span></span><br><span class="line">       LinearLayout.LayoutParams params=<span class="keyword">new</span> LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,height);</span><br><span class="line">       v.setLayoutParams(params);</span><br><span class="line">       <span class="comment">//或者可以设置padding</span></span><br><span class="line">       <span class="comment">//v.setPadding(0,height,0,0);</span></span><br></pre></td></tr></table></figure></p>
 <p>最终效果<br><img src="http://img.blog.csdn.net/20160217165746838" alt="左侧黑色就是menu部分，右侧蓝色是activity的部分"></p>
 
-          
-        
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/SlidingMenu/" rel="tag">#SlidingMenu</a>
+          
+        </div>
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/17/WebView 小结/" rel="prev" title="WebView小结">
+                WebView小结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
 
-  </section>
-
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -520,6 +310,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/17/slidingmenu实现沉浸式/"
+           data-title="slidingmenu实现沉浸式" data-url="http://yoursite.com/2016/02/17/slidingmenu实现沉浸式/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -539,8 +337,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/icon.jpg"
@@ -595,6 +402,23 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
       
 
     </div>
@@ -669,6 +493,167 @@
   
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 
