@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -61,11 +61,11 @@
 注意，一旦调用webview.loadU">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebView小结">
-<meta property="og:url" content="http://yoursite.com/2016/02/17/WebView 小结/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/02/18/WebView 小结/index.html">
 <meta property="og:site_name" content="CaoJian">
 <meta property="og:description" content="#android调用JS使用webview.loadUrl(String jsstring)来使android调用javascrip方法。这种调用方式是没有返回值的。string的格式为：    有参  javascript:js方法名(‘“+参数1+”‘,’”+参数2+”‘,’” + 参数3+ “”)”    无参  javascript:js方法名()
 注意，一旦调用webview.loadU">
-<meta property="og:updated_time" content="2016-02-17T09:32:47.910Z">
+<meta property="og:updated_time" content="2016-02-18T01:52:14.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebView小结">
 <meta name="twitter:description" content="#android调用JS使用webview.loadUrl(String jsstring)来使android调用javascrip方法。这种调用方式是没有返回值的。string的格式为：    有参  javascript:js方法名(‘“+参数1+”‘,’”+参数2+”‘,’” + 参数3+ “”)”    无参  javascript:js方法名()
@@ -76,8 +76,8 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -144,6 +144,26 @@
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -219,21 +239,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T17:32:47+08:00" content="2016-02-17">
-              2016-02-17
+            <time itemprop="dateCreated" datetime="2016-02-18T09:52:14+08:00" content="2016-02-18">
+              2016-02-18
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/17/WebView 小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/WebView 小结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -255,6 +268,7 @@
         <p>#android调用JS<br>使用webview.loadUrl(String jsstring)来使android调用javascrip方法。这种调用方式是没有返回值的。<br>string的格式为：<br>    有参  javascript:js方法名(‘“+参数1+”‘,’”+参数2+”‘,’” + 参数3+ “”)”<br>    无参  javascript:js方法名()</p>
 <pre><code>注意，一旦调用webview.loadUrl(jsString)方法，webview将会立即尝试调用js，也就是说如果调用该方法时网页还未加载完毕，那么加载调用失败。如果需要在网页加载后传递参数，那个可以webview.setWebViewClient(webViewClient)的onPageFinished(view, url)方法中调用js以传递数据。
 </code></pre><hr>
+<a id="more"></a>
 <p>#JS调用android<br>使用webView.addJavascriptInterface(Object object,String name)方法来添加可以被js调用的接口。其中，object为自定义的接口类(此接口非彼接口)，name为提供的接口的名字。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例如，webView.addJavascriptInterface(new JS,"js");</span></span><br><span class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">JS</span></span>&#123;</span><br><span class="line">	<span class="comment">//这是无参有返回的调用</span></span><br><span class="line">        <span class="annotation">@JavascriptInterface</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getParams</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> params;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//这是有参无返回的调用</span></span><br><span class="line">        <span class="annotation">@JavascriptInterface</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showString</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//这是有参有返回的调用</span></span><br><span class="line">        <span class="annotation">@JavascriptInterface</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">showString</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">	        <span class="keyword">return</span> str;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>在js中就是使用 window.js.getParames()就能调用android中的JS中的getParams()方法。</p>
@@ -289,7 +303,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/17/slidingmenu实现沉浸式/" rel="next" title="slidingmenu实现沉浸式">
+              <a href="/2016/02/18/slidingmenu实现沉浸式/" rel="next" title="slidingmenu实现沉浸式">
                 <i class="fa fa-chevron-left"></i> slidingmenu实现沉浸式
               </a>
             
@@ -297,7 +311,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/17/获取View的截图与视图镜像/" rel="prev" title="View的截图与视图镜像">
+              <a href="/2016/02/18/获取View的截图与视图镜像/" rel="prev" title="View的截图与视图镜像">
                 View的截图与视图镜像 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -324,10 +338,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/02/17/WebView 小结/"
-           data-title="WebView小结" data-url="http://yoursite.com/2016/02/17/WebView 小结/">
-      </div>
     
   </div>
 
@@ -381,7 +391,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -408,6 +418,10 @@
             
               <span class="links-of-author-item">
                 <a href="http://kikijie.com/" target="_blank">KiKiJie</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://itzhong.github.io/" target="_blank">ZhongZiMing</a>
               </span>
             
           
@@ -461,7 +475,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -504,6 +518,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
 
   
   
@@ -677,28 +698,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"itzhong"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
+  
 
 
 

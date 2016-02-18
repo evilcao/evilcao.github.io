@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -61,12 +61,12 @@
 #关于slidingmenu这是一个很著名的实现侧滑菜单的库。github地址:https://github.com/jfeinstei">
 <meta property="og:type" content="article">
 <meta property="og:title" content="slidingmenu实现沉浸式">
-<meta property="og:url" content="http://yoursite.com/2016/02/17/slidingmenu实现沉浸式/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/02/18/slidingmenu实现沉浸式/index.html">
 <meta property="og:site_name" content="CaoJian">
 <meta property="og:description" content="#关于沉浸式  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。  具体实现可以参考hongyang大神的文章:http://blog.csdn.net/lmj623565791/article/details/48649563
 #关于slidingmenu这是一个很著名的实现侧滑菜单的库。github地址:https://github.com/jfeinstei">
 <meta property="og:image" content="http://img.blog.csdn.net/20160217165746838">
-<meta property="og:updated_time" content="2016-02-17T09:32:39.971Z">
+<meta property="og:updated_time" content="2016-02-18T01:52:03.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="slidingmenu实现沉浸式">
 <meta name="twitter:description" content="#关于沉浸式  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。  具体实现可以参考hongyang大神的文章:http://blog.csdn.net/lmj623565791/article/details/48649563
@@ -77,8 +77,8 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -145,6 +145,26 @@
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -220,21 +240,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T17:32:39+08:00" content="2016-02-17">
-              2016-02-17
+            <time itemprop="dateCreated" datetime="2016-02-18T09:52:03+08:00" content="2016-02-18">
+              2016-02-18
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/17/slidingmenu实现沉浸式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/slidingmenu实现沉浸式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -257,7 +270,7 @@
 <p>#关于slidingmenu<br>这是一个很著名的实现侧滑菜单的库。github地址:<link><a href="https://github.com/jfeinstein10/SlidingMenu" target="_blank" rel="external">https://github.com/jfeinstein10/SlidingMenu</a></p>
 <p>#使slidingmenu实现沉浸式<br>当我们使用slidingmenu的情况下，如果slidingmenu的顶部和沉浸式状态栏的颜色不一致，那么会使侧滑显得十分丑陋。我们想要的是使slidingmenu也能够沉浸入状态栏，使slidingmenu的滑动也能在状态栏中实现。类似于qq、知乎中滑动菜单的效果。</p>
 <p>  我们知道，沉浸式的状态栏的实现，实际上是使系统状态栏为背景为透明，然后在其区域添加一个view(该view的显示由我们自己定义)，这样就能在状态栏添加上我们想要的背景。对于slidingmenu，其内部是使用ViewAbove和ViewBehind来分代表主页面视图和菜单视图，分别对应menu.getContent()，menu.getMenu（）。</p>
-<p>由以上两点，我们就可以实现lidingmenu该怎样实现沉浸式了。将系统状态栏颜色置为透明，在菜单和主页面视图顶部加入一个占位的view，菜单中为透明主页面中为主题色，设置该view的高度或者paddingTop为状态栏高度。这样就能使slidingmenu实现沉浸式了。</p>
+<p>由以上两点，我们就可以实现lidingmenu该怎样实现沉浸式了。将系统状态栏颜色置为透明，在菜单和主页面视图顶部加入一个占位的view，菜单中为透明主页面中为主题色，设置该view的高度或者paddingTop为状态栏高度。这样就能使slidingmenu实现沉浸式了。<br><a id="more"></a></p>
 <p>#代码<br>acvitiy中的相关代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        <span class="comment">//这里使用的是slidingmenu的第三种用法。</span></span><br><span class="line">        setContentView(R.layout.slidingmenu_main);</span><br><span class="line">        <span class="comment">//初始化菜单</span></span><br><span class="line">        initMenu();</span><br><span class="line">        <span class="comment">//使状态栏为透明</span></span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</span><br><span class="line">            <span class="comment">//顶部状态栏为透明</span></span><br><span class="line">            getWindow().addFlags(</span><br><span class="line">                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里是使用一个fragment作为菜单</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initMenu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mMenuFragment = <span class="keyword">new</span> MenuFragment();</span><br><span class="line"></span><br><span class="line">        View view = getLayoutInflater().inflate(R.layout.menu_frame, <span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">        getSupportFragmentManager().beginTransaction().replace(R.id.fl_menu_frame, mMenuFragment).commit();</span><br><span class="line"></span><br><span class="line">        mMenu = (SlidingMenu) findViewById(R.id.slidingmenu);</span><br><span class="line">        mMenu.setMode(SlidingMenu.LEFT);</span><br><span class="line">        <span class="comment">// 设置触摸屏幕的模式</span></span><br><span class="line">        mMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);</span><br><span class="line">        <span class="comment">//获取屏幕宽高</span></span><br><span class="line">        DisplayMetrics dm = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">        getWindowManager().getDefaultDisplay().getMetrics(dm);</span><br><span class="line">        <span class="comment">// 设置滑动菜单视图的宽度</span></span><br><span class="line">        mMenu.setBehindWidth(dm.widthPixels * <span class="number">6</span> / <span class="number">10</span>);</span><br><span class="line">        <span class="comment">// 设置渐入渐出效果的值</span></span><br><span class="line">        mMenu.setFadeDegree(<span class="number">0.35f</span>);</span><br><span class="line">        mMenu.setMenu(view);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>slidingmenu_main的代码.SlidingMenu的sliding:viewAbove里就是你真正的使用的布局xml<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;RelativeLayout </span><br><span class="line">	xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">    android:id="@+id/id_main_ly"</span><br><span class="line">    android:layout_width="match_parent"</span><br><span class="line">    android:layout_height="match_parent"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.jeremyfeinstein.slidingmenu.lib.SlidingMenu </span><br><span class="line">	    xmlns:sliding="http://schemas.android.com/apk/res-auto"</span><br><span class="line">        android:id="@+id/slidingmenulayout"</span><br><span class="line">        android:layout_width="match_parent"</span><br><span class="line">        android:layout_height="match_parent"</span><br><span class="line">        sliding:viewAbove="@layout/activity_main" /&gt;</span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure></p>
 <p>activity_main的布局<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:background</span>=<span class="value">"@android:color/holo_blue_light"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">View</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/stras_padding"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"0dp"</span></span><br><span class="line">        <span class="attribute">android:background</span>=<span class="value">"@android:color/holo_blue_dark"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -284,7 +297,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/17/WebView 小结/" rel="prev" title="WebView小结">
+              <a href="/2016/02/18/WebView 小结/" rel="prev" title="WebView小结">
                 WebView小结 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -311,10 +324,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/02/17/slidingmenu实现沉浸式/"
-           data-title="slidingmenu实现沉浸式" data-url="http://yoursite.com/2016/02/17/slidingmenu实现沉浸式/">
-      </div>
     
   </div>
 
@@ -368,7 +377,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -395,6 +404,10 @@
             
               <span class="links-of-author-item">
                 <a href="http://kikijie.com/" target="_blank">KiKiJie</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://itzhong.github.io/" target="_blank">ZhongZiMing</a>
               </span>
             
           
@@ -448,7 +461,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -491,6 +504,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
 
   
   
@@ -664,28 +684,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"itzhong"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
+  
 
 
 

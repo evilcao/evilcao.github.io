@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -72,8 +72,8 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -142,6 +142,26 @@
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -221,7 +241,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/17/获取View的截图与视图镜像/" itemprop="url">
+                <a class="post-title-link" href="/2016/02/18/获取View的截图与视图镜像/" itemprop="url">
                   View的截图与视图镜像
                 </a>
               
@@ -235,21 +255,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T17:33:00+08:00" content="2016-02-17">
-              2016-02-17
+            <time itemprop="dateCreated" datetime="2016-02-18T09:52:26+08:00" content="2016-02-18">
+              2016-02-18
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/17/获取View的截图与视图镜像/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/获取View的截图与视图镜像/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -269,18 +282,13 @@
 
       
         
-          
-            <p>#View.getDrawingCache（）<br>所有的View都有该方法，该方法是获取view对象的绘制镜像(Bitmap)。<br>需要注意的是，在需要获取view的视图镜像时若view的绘制镜像的大小超过了系统默认值时就会返回null。<br>以下是view.getDrawingCache()的一部分代码</p>
+          <p>#View.getDrawingCache（）<br>所有的View都有该方法，该方法是获取view对象的绘制镜像(Bitmap)。<br>需要注意的是，在需要获取view的视图镜像时若view的绘制镜像的大小超过了系统默认值时就会返回null。<br>以下是view.getDrawingCache()的一部分代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (width &lt;= <span class="number">0</span> || height &lt;= <span class="number">0</span> ||</span><br><span class="line">         (width * height * (opaque &amp;&amp; !translucentWindow ? <span class="number">2</span> : <span class="number">4</span>) &gt;</span><br><span class="line">                 ViewConfiguration.get(mContext).getScaledMaximumDrawingCacheSize())) &#123;</span><br><span class="line">                destroyDrawingCache();</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>其中getScaledMaximumDrawingCacheSize()就是获取系统允许的最大缓存，width <em> height </em> (opaque &amp;&amp; !translucentWindow ? 2 : 4)就是计算绘制镜像所需的大小。<br>  注意： WebView默认是不能获取绘图镜像的。需要mWebView.setDrawingCacheEnabled(true)后才能通过该方法获取缓存。</p>
-<p>#通过绘制图像绕过大小限制<br>  这种方法的好处是你想要在镜像上额外添加图标或者水印都比较方便，而且可以自定图像精度<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">getBitmapFromView</span><span class="params">(View view, <span class="keyword">boolean</span> isParemt)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">if</span> (view== <span class="keyword">null</span>) &#123;  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="comment">//创建一个和view同样宽高的空bitmap</span></span><br><span class="line">        Bitmap viewshot = Bitmap.createBitmap(view.getWidth(), view.getHeight(), HDConstantSet.BITMAP_QUALITY);  </span><br><span class="line">        <span class="comment">//将view绘制上去</span></span><br><span class="line">        Canvas c = <span class="keyword">new</span> Canvas(viewshot);  </span><br><span class="line">        c.translate(-view.getScrollX(), -view.getScrollY());  </span><br><span class="line">        view.draw(c);  </span><br><span class="line">        <span class="keyword">return</span> viewshot ;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>#测量View后主动创建绘制镜像<br>这种方式是调用系统的方法<br><figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="component">public static Bitmap getBitmapFromView(View view)&#123;</span><br><span class="line">   　　　view<span class="string">.measure(MeasureSpec.makeMeasureSpec(0</span>, MeasureSpec<span class="string">.UNSPECIFIED)</span>, MeasureSpec<span class="string">.makeMeasureSpec(0</span>, MeasureSpec<span class="string">.UNSPECIFIED))</span>;</span><br><span class="line">        view<span class="string">.layout(0</span>, 0, view<span class="string">.getMeasuredWidth()</span>, view<span class="string">.getMeasuredHeight())</span>;</span><br><span class="line">        //该方法有另一个重载，view<span class="string">.buildDrawingCache(true)</span>;表示会对镜像进行缩放。</span><br><span class="line">        view<span class="string">.buildDrawingCache()</span>;</span><br><span class="line">        Bitmap bitmap = view<span class="string">.getDrawingCache()</span>;</span><br><span class="line">　　　　 return bitmap;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>#web的截屏<br>安卓提供了webView.capturePicture()来获取其镜像。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**  </span><br><span class="line"> * 截取webView快照(webView加载的整个内容的大小)  </span><br><span class="line"> * @param webView  </span><br><span class="line"> * @return  </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="label">private</span> <span class="keyword">Bitmap </span>captureWebView(WebView webView)&#123;  </span><br><span class="line">    Picture snapShot = webView.capturePicture()<span class="comment">;  </span></span><br><span class="line">    <span class="keyword">Bitmap </span><span class="keyword">bmp </span>= <span class="keyword">Bitmap.createBitmap(snapShot.getWidth(),snapShot.getHeight(), </span><span class="keyword">Bitmap.Config.ARGB_8888); </span> </span><br><span class="line">    Canvas canvas = new Canvas(<span class="keyword">bmp); </span> </span><br><span class="line">    snapShot.draw(canvas)<span class="comment">;  </span></span><br><span class="line">    return <span class="keyword">bmp; </span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>#对activity截屏<br>  我们知道activity对应的视图对象就是activity.getWindow().getDecorView()，用上述的方法就可以获取截图了。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/18/获取View的截图与视图镜像/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -320,7 +328,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/17/WebView 小结/" itemprop="url">
+                <a class="post-title-link" href="/2016/02/18/WebView 小结/" itemprop="url">
                   WebView小结
                 </a>
               
@@ -334,21 +342,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T17:32:47+08:00" content="2016-02-17">
-              2016-02-17
+            <time itemprop="dateCreated" datetime="2016-02-18T09:52:14+08:00" content="2016-02-18">
+              2016-02-18
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/17/WebView 小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/WebView 小结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -368,29 +369,14 @@
 
       
         
-          
-            <p>#android调用JS<br>使用webview.loadUrl(String jsstring)来使android调用javascrip方法。这种调用方式是没有返回值的。<br>string的格式为：<br>    有参  javascript:js方法名(‘“+参数1+”‘,’”+参数2+”‘,’” + 参数3+ “”)”<br>    无参  javascript:js方法名()</p>
+          <p>#android调用JS<br>使用webview.loadUrl(String jsstring)来使android调用javascrip方法。这种调用方式是没有返回值的。<br>string的格式为：<br>    有参  javascript:js方法名(‘“+参数1+”‘,’”+参数2+”‘,’” + 参数3+ “”)”<br>    无参  javascript:js方法名()</p>
 <pre><code>注意，一旦调用webview.loadUrl(jsString)方法，webview将会立即尝试调用js，也就是说如果调用该方法时网页还未加载完毕，那么加载调用失败。如果需要在网页加载后传递参数，那个可以webview.setWebViewClient(webViewClient)的onPageFinished(view, url)方法中调用js以传递数据。
 </code></pre><hr>
-<p>#JS调用android<br>使用webView.addJavascriptInterface(Object object,String name)方法来添加可以被js调用的接口。其中，object为自定义的接口类(此接口非彼接口)，name为提供的接口的名字。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例如，webView.addJavascriptInterface(new JS,"js");</span></span><br><span class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">JS</span></span>&#123;</span><br><span class="line">	<span class="comment">//这是无参有返回的调用</span></span><br><span class="line">        <span class="annotation">@JavascriptInterface</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getParams</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> params;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//这是有参无返回的调用</span></span><br><span class="line">        <span class="annotation">@JavascriptInterface</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showString</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//这是有参有返回的调用</span></span><br><span class="line">        <span class="annotation">@JavascriptInterface</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">showString</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">	        <span class="keyword">return</span> str;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>在js中就是使用 window.js.getParames()就能调用android中的JS中的getParams()方法。</p>
-<pre><code>注意: 
-1. 在4.2里，对addJavascriptInterface()方法做了安全限制，如果需要兼容4.2版本，那么需要在JS的接口类的方法类加上@JavascriptInterface的注解。在添加这个注释后，js的alert()等方法均会被拦截。
-2. andorid调用js平均需要100-200毫秒，而js调用安卓需要40-50毫秒。
-3. 不要对js接口类做混淆。否则网页将调用不了相关方法。
-</code></pre><hr>
-<p>#WebViewClient<br>该类主要处理网页的各种通知事件的。<br>主要的方法有：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//该方法在网页加载完毕后回调，此时网页内的js等已经加载完成</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageFinished</span><span class="params">(WebView view, String url)</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">//该方法在网页加载错误后回调</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceivedError</span><span class="params">(WebView view, <span class="keyword">int</span> errorCode, String description, String failingUrl)</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">//是否对链接跳转进行拦截，返回true表示要自己对跳转进行处理。且在此webview内进行加载</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldOverrideUrlLoading</span><span class="params">(WebView view, String url)</span> </span>&#123;</span><br></pre></td></tr></table></figure>
-<pre><code>注意:
-1.可以通过shouldOverrideUrlLoading(WebView view, String url)，重载url的方式来传递数据给web页面。
-</code></pre><hr>
-<p>#WebChromeClient<br>该类主要处理网页的对话框，标题，加载进度等。<br>主要方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载进度的回调。pogress为加载进度</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onProgressChanged</span><span class="params">(WebView view, <span class="keyword">int</span> progress)</span> </span>&#123; &#125;</span><br><span class="line"><span class="comment">//js弹窗的回调。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onJsAlert</span><span class="params">(WebView view, String url, String message, JsResult result)</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">//js弹窗的确认被点击的回调</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onJsConfirm</span><span class="params">(WebView view, String url, String message, JsResult result)</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<pre><code>注意
-1.如果在onJsAlert()方法中使用android的弹出对话框，在点击确定后需要调用result.confirm()方法来通知js对话框已被点击，否则后续的js将不会执行。
-</code></pre>
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/18/WebView 小结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -430,7 +416,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/17/slidingmenu实现沉浸式/" itemprop="url">
+                <a class="post-title-link" href="/2016/02/18/slidingmenu实现沉浸式/" itemprop="url">
                   slidingmenu实现沉浸式
                 </a>
               
@@ -444,21 +430,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T17:32:39+08:00" content="2016-02-17">
-              2016-02-17
+            <time itemprop="dateCreated" datetime="2016-02-18T09:52:03+08:00" content="2016-02-18">
+              2016-02-18
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/17/slidingmenu实现沉浸式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/slidingmenu实现沉浸式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -478,19 +457,16 @@
 
       
         
-          
-            <p>#关于沉浸式<br>  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。<br>  具体实现可以参考hongyang大神的文章:<link><a href="http://blog.csdn.net/lmj623565791/article/details/48649563" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/48649563</a></p>
-<p>#关于slidingmenu<br>这是一个很著名的实现侧滑菜单的库。github地址:<link><a href="https://github.com/jfeinstein10/SlidingMenu" target="_blank" rel="external">https://github.com/jfeinstein10/SlidingMenu</a></p>
+          <p>#关于沉浸式<br>  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。<br>  具体实现可以参考hongyang大神的文章:<link><a href="http://blog.csdn.net/lmj623565791/article/details/48649563">http://blog.csdn.net/lmj623565791/article/details/48649563</a></link></p>
+<p>#关于slidingmenu<br>这是一个很著名的实现侧滑菜单的库。github地址:<link><a href="https://github.com/jfeinstein10/SlidingMenu">https://github.com/jfeinstein10/SlidingMenu</a></link></p>
 <p>#使slidingmenu实现沉浸式<br>当我们使用slidingmenu的情况下，如果slidingmenu的顶部和沉浸式状态栏的颜色不一致，那么会使侧滑显得十分丑陋。我们想要的是使slidingmenu也能够沉浸入状态栏，使slidingmenu的滑动也能在状态栏中实现。类似于qq、知乎中滑动菜单的效果。</p>
 <p>  我们知道，沉浸式的状态栏的实现，实际上是使系统状态栏为背景为透明，然后在其区域添加一个view(该view的显示由我们自己定义)，这样就能在状态栏添加上我们想要的背景。对于slidingmenu，其内部是使用ViewAbove和ViewBehind来分代表主页面视图和菜单视图，分别对应menu.getContent()，menu.getMenu（）。</p>
-<p>由以上两点，我们就可以实现lidingmenu该怎样实现沉浸式了。将系统状态栏颜色置为透明，在菜单和主页面视图顶部加入一个占位的view，菜单中为透明主页面中为主题色，设置该view的高度或者paddingTop为状态栏高度。这样就能使slidingmenu实现沉浸式了。</p>
-<p>#代码<br>acvitiy中的相关代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        <span class="comment">//这里使用的是slidingmenu的第三种用法。</span></span><br><span class="line">        setContentView(R.layout.slidingmenu_main);</span><br><span class="line">        <span class="comment">//初始化菜单</span></span><br><span class="line">        initMenu();</span><br><span class="line">        <span class="comment">//使状态栏为透明</span></span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</span><br><span class="line">            <span class="comment">//顶部状态栏为透明</span></span><br><span class="line">            getWindow().addFlags(</span><br><span class="line">                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里是使用一个fragment作为菜单</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initMenu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mMenuFragment = <span class="keyword">new</span> MenuFragment();</span><br><span class="line"></span><br><span class="line">        View view = getLayoutInflater().inflate(R.layout.menu_frame, <span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">        getSupportFragmentManager().beginTransaction().replace(R.id.fl_menu_frame, mMenuFragment).commit();</span><br><span class="line"></span><br><span class="line">        mMenu = (SlidingMenu) findViewById(R.id.slidingmenu);</span><br><span class="line">        mMenu.setMode(SlidingMenu.LEFT);</span><br><span class="line">        <span class="comment">// 设置触摸屏幕的模式</span></span><br><span class="line">        mMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);</span><br><span class="line">        <span class="comment">//获取屏幕宽高</span></span><br><span class="line">        DisplayMetrics dm = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">        getWindowManager().getDefaultDisplay().getMetrics(dm);</span><br><span class="line">        <span class="comment">// 设置滑动菜单视图的宽度</span></span><br><span class="line">        mMenu.setBehindWidth(dm.widthPixels * <span class="number">6</span> / <span class="number">10</span>);</span><br><span class="line">        <span class="comment">// 设置渐入渐出效果的值</span></span><br><span class="line">        mMenu.setFadeDegree(<span class="number">0.35f</span>);</span><br><span class="line">        mMenu.setMenu(view);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>slidingmenu_main的代码.SlidingMenu的sliding:viewAbove里就是你真正的使用的布局xml<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;RelativeLayout </span><br><span class="line">	xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">    android:id="@+id/id_main_ly"</span><br><span class="line">    android:layout_width="match_parent"</span><br><span class="line">    android:layout_height="match_parent"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.jeremyfeinstein.slidingmenu.lib.SlidingMenu </span><br><span class="line">	    xmlns:sliding="http://schemas.android.com/apk/res-auto"</span><br><span class="line">        android:id="@+id/slidingmenulayout"</span><br><span class="line">        android:layout_width="match_parent"</span><br><span class="line">        android:layout_height="match_parent"</span><br><span class="line">        sliding:viewAbove="@layout/activity_main" /&gt;</span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure></p>
-<p>activity_main的布局<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:background</span>=<span class="value">"@android:color/holo_blue_light"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">View</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/stras_padding"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"0dp"</span></span><br><span class="line">        <span class="attribute">android:background</span>=<span class="value">"@android:color/holo_blue_dark"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>由于设置为透明后，activity和slidingmenu中的内容会顶到菜单栏，所以需要手动设置一个透明的高度将内容重新顶回状态栏下方<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取状态栏高度</span></span><br><span class="line">       <span class="keyword">int</span> height=UIUtils.getStatusBarHeight(getActivity());</span><br><span class="line">       <span class="comment">//获取activity和menu中的占位view。两者代码一致</span></span><br><span class="line">       View v=view.findViewById(R.id.stras_padding);</span><br><span class="line">       <span class="comment">//设置占位view的高度为状态栏高度</span></span><br><span class="line">       LinearLayout.LayoutParams params=<span class="keyword">new</span> LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,height);</span><br><span class="line">       v.setLayoutParams(params);</span><br><span class="line">       <span class="comment">//或者可以设置padding</span></span><br><span class="line">       <span class="comment">//v.setPadding(0,height,0,0);</span></span><br></pre></td></tr></table></figure></p>
-<p>最终效果<br><img src="http://img.blog.csdn.net/20160217165746838" alt="左侧黑色就是menu部分，右侧蓝色是activity的部分"></p>
-
-          
+<p>由以上两点，我们就可以实现lidingmenu该怎样实现沉浸式了。将系统状态栏颜色置为透明，在菜单和主页面视图顶部加入一个占位的view，菜单中为透明主页面中为主题色，设置该view的高度或者paddingTop为状态栏高度。这样就能使slidingmenu实现沉浸式了。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/18/slidingmenu实现沉浸式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -561,7 +537,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -588,6 +564,10 @@
             
               <span class="links-of-author-item">
                 <a href="http://kikijie.com/" target="_blank">KiKiJie</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://itzhong.github.io/" target="_blank">ZhongZiMing</a>
               </span>
             
           
@@ -624,7 +604,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -668,6 +648,13 @@
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
   
 
   
@@ -679,28 +666,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"itzhong"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
+  
 
 
 
