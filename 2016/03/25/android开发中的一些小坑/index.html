@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="SlidingMenu," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -57,20 +57,16 @@
 
 
 
-<meta name="description" content="#关于沉浸式  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。  具体实现可以参考hongyang大神的文章:http://blog.csdn.net/lmj623565791/article/details/48649563
-#关于slidingmenu这是一个很著名的实现侧滑菜单的库。github地址:https://github.com/jfeinstei">
+<meta name="description" content="###1.startActvityForResult跳转直接回调的问题该问题是由于android的机制中认为不同栈中的activity是不能直接交互的，所以activity的lauchmode如果为singleinstance或者singletask那么startActvityForResult在启动目标activity后直接执行，不能正确回调。在activity的startActivityFor">
 <meta property="og:type" content="article">
-<meta property="og:title" content="slidingmenu实现沉浸式">
-<meta property="og:url" content="http://yoursite.com/2016/02/18/slidingmenu实现沉浸式/index.html">
+<meta property="og:title" content="CaoJian">
+<meta property="og:url" content="http://yoursite.com/2016/03/25/android开发中的一些小坑/index.html">
 <meta property="og:site_name" content="CaoJian">
-<meta property="og:description" content="#关于沉浸式  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。  具体实现可以参考hongyang大神的文章:http://blog.csdn.net/lmj623565791/article/details/48649563
-#关于slidingmenu这是一个很著名的实现侧滑菜单的库。github地址:https://github.com/jfeinstei">
-<meta property="og:image" content="http://img.blog.csdn.net/20160217165746838">
-<meta property="og:updated_time" content="2016-02-18T01:52:03.456Z">
+<meta property="og:description" content="###1.startActvityForResult跳转直接回调的问题该问题是由于android的机制中认为不同栈中的activity是不能直接交互的，所以activity的lauchmode如果为singleinstance或者singletask那么startActvityForResult在启动目标activity后直接执行，不能正确回调。在activity的startActivityFor">
+<meta property="og:updated_time" content="2016-03-25T07:45:20.689Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="slidingmenu实现沉浸式">
-<meta name="twitter:description" content="#关于沉浸式  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。  具体实现可以参考hongyang大神的文章:http://blog.csdn.net/lmj623565791/article/details/48649563
-#关于slidingmenu这是一个很著名的实现侧滑菜单的库。github地址:https://github.com/jfeinstei">
+<meta name="twitter:title" content="CaoJian">
+<meta name="twitter:description" content="###1.startActvityForResult跳转直接回调的问题该问题是由于android的机制中认为不同栈中的activity是不能直接交互的，所以activity的lauchmode如果为singleinstance或者singletask那么startActvityForResult在启动目标activity后直接执行，不能正确回调。在activity的startActivityFor">
 
 
 
@@ -88,7 +84,7 @@
   };
 </script>
 
-  <title> slidingmenu实现沉浸式 | CaoJian </title>
+  <title>  | CaoJian </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -228,7 +224,7 @@
             
             
               
-                slidingmenu实现沉浸式
+                
               
             
           </h1>
@@ -240,8 +236,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-18T09:52:03+08:00" content="2016-02-18">
-              2016-02-18
+            <time itemprop="dateCreated" datetime="2016-03-25T15:46:23+08:00" content="2016-03-25">
+              2016-03-25
             </time>
           </span>
 
@@ -251,8 +247,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/18/slidingmenu实现沉浸式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/slidingmenu实现沉浸式/" itemprop="commentsCount"></span>
+                <a href="/2016/03/25/android开发中的一些小坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/25/android开发中的一些小坑/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -273,40 +269,29 @@
       
 
       
-        <p>#关于沉浸式<br>  什么是沉浸式？意思就是状态栏的背景我们可以进行设置，使其和我们的app风格相一致。<br>  具体实现可以参考hongyang大神的文章:<link><a href="http://blog.csdn.net/lmj623565791/article/details/48649563" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/48649563</a></p>
-<p>#关于slidingmenu<br>这是一个很著名的实现侧滑菜单的库。github地址:<link><a href="https://github.com/jfeinstein10/SlidingMenu" target="_blank" rel="external">https://github.com/jfeinstein10/SlidingMenu</a></p>
-<p>#使slidingmenu实现沉浸式<br>当我们使用slidingmenu的情况下，如果slidingmenu的顶部和沉浸式状态栏的颜色不一致，那么会使侧滑显得十分丑陋。我们想要的是使slidingmenu也能够沉浸入状态栏，使slidingmenu的滑动也能在状态栏中实现。类似于qq、知乎中滑动菜单的效果。</p>
-<p>  我们知道，沉浸式的状态栏的实现，实际上是使系统状态栏为背景为透明，然后在其区域添加一个view(该view的显示由我们自己定义)，这样就能在状态栏添加上我们想要的背景。对于slidingmenu，其内部是使用ViewAbove和ViewBehind来分代表主页面视图和菜单视图，分别对应menu.getContent()，menu.getMenu（）。</p>
-<p>由以上两点，我们就可以实现lidingmenu该怎样实现沉浸式了。将系统状态栏颜色置为透明，在菜单和主页面视图顶部加入一个占位的view，菜单中为透明主页面中为主题色，设置该view的高度或者paddingTop为状态栏高度。这样就能使slidingmenu实现沉浸式了。<br><a id="more"></a></p>
-<p>#代码<br>acvitiy中的相关代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        <span class="comment">//这里使用的是slidingmenu的第三种用法。</span></span><br><span class="line">        setContentView(R.layout.slidingmenu_main);</span><br><span class="line">        <span class="comment">//初始化菜单</span></span><br><span class="line">        initMenu();</span><br><span class="line">        <span class="comment">//使状态栏为透明</span></span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</span><br><span class="line">            <span class="comment">//顶部状态栏为透明</span></span><br><span class="line">            getWindow().addFlags(</span><br><span class="line">                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里是使用一个fragment作为菜单</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initMenu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mMenuFragment = <span class="keyword">new</span> MenuFragment();</span><br><span class="line"></span><br><span class="line">        View view = getLayoutInflater().inflate(R.layout.menu_frame, <span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">        getSupportFragmentManager().beginTransaction().replace(R.id.fl_menu_frame, mMenuFragment).commit();</span><br><span class="line"></span><br><span class="line">        mMenu = (SlidingMenu) findViewById(R.id.slidingmenu);</span><br><span class="line">        mMenu.setMode(SlidingMenu.LEFT);</span><br><span class="line">        <span class="comment">// 设置触摸屏幕的模式</span></span><br><span class="line">        mMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);</span><br><span class="line">        <span class="comment">//获取屏幕宽高</span></span><br><span class="line">        DisplayMetrics dm = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">        getWindowManager().getDefaultDisplay().getMetrics(dm);</span><br><span class="line">        <span class="comment">// 设置滑动菜单视图的宽度</span></span><br><span class="line">        mMenu.setBehindWidth(dm.widthPixels * <span class="number">6</span> / <span class="number">10</span>);</span><br><span class="line">        <span class="comment">// 设置渐入渐出效果的值</span></span><br><span class="line">        mMenu.setFadeDegree(<span class="number">0.35f</span>);</span><br><span class="line">        mMenu.setMenu(view);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>slidingmenu_main的代码.SlidingMenu的sliding:viewAbove里就是你真正的使用的布局xml<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;RelativeLayout </span><br><span class="line">	xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">    android:id="@+id/id_main_ly"</span><br><span class="line">    android:layout_width="match_parent"</span><br><span class="line">    android:layout_height="match_parent"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.jeremyfeinstein.slidingmenu.lib.SlidingMenu </span><br><span class="line">	    xmlns:sliding="http://schemas.android.com/apk/res-auto"</span><br><span class="line">        android:id="@+id/slidingmenulayout"</span><br><span class="line">        android:layout_width="match_parent"</span><br><span class="line">        android:layout_height="match_parent"</span><br><span class="line">        sliding:viewAbove="@layout/activity_main" /&gt;</span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure></p>
-<p>activity_main的布局<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:background</span>=<span class="value">"@android:color/holo_blue_light"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">View</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/stras_padding"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"0dp"</span></span><br><span class="line">        <span class="attribute">android:background</span>=<span class="value">"@android:color/holo_blue_dark"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>由于设置为透明后，activity和slidingmenu中的内容会顶到菜单栏，所以需要手动设置一个透明的高度将内容重新顶回状态栏下方<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取状态栏高度</span></span><br><span class="line">       <span class="keyword">int</span> height=UIUtils.getStatusBarHeight(getActivity());</span><br><span class="line">       <span class="comment">//获取activity和menu中的占位view。两者代码一致</span></span><br><span class="line">       View v=view.findViewById(R.id.stras_padding);</span><br><span class="line">       <span class="comment">//设置占位view的高度为状态栏高度</span></span><br><span class="line">       LinearLayout.LayoutParams params=<span class="keyword">new</span> LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,height);</span><br><span class="line">       v.setLayoutParams(params);</span><br><span class="line">       <span class="comment">//或者可以设置padding</span></span><br><span class="line">       <span class="comment">//v.setPadding(0,height,0,0);</span></span><br></pre></td></tr></table></figure></p>
-<p>最终效果<br><img src="http://img.blog.csdn.net/20160217165746838" alt="左侧黑色就是menu部分，右侧蓝色是activity的部分"></p>
+        <p>###1.startActvityForResult跳转直接回调的问题<br>该问题是由于android的机制中认为不同栈中的activity是不能直接交互的，所以activity的lauchmode如果为singleinstance或者singletask那么startActvityForResult在启动目标activity后直接执行，不能正确回调。<br>在activity的startActivityForResult()的源码中有这么一段注释，已经解释了原因了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**  In other protocols (such as</span><br><span class="line">  * &#123;<span class="doctag">@link</span> Intent#ACTION_MAIN&#125; or &#123;<span class="doctag">@link</span> Intent#ACTION_VIEW&#125;), you may</span><br><span class="line">  * not get the result when you expect.  For example, if the activity you</span><br><span class="line">  * are launching uses the singleTask launch mode, it will not run in your</span><br><span class="line">  * task and thus you will immediately receive a cancel result.</span><br><span class="line">  * */</span></span><br></pre></td></tr></table></figure>
+<p>###2.Cannot add header view to list<br>在4.3之前(不包括4.3)的系统中，如果listview使用addHeaderView()在setAdapter()之前调用，则会跑出这个异常，可以算是系统的一个小BUG了，这个bug在4.3之后修复了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//4.2之前的系统中</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addHeaderView</span><span class="params">(View v, Object data, <span class="keyword">boolean</span> isSelectable)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">if</span> (mAdapter != <span class="keyword">null</span> &amp;&amp; ! (mAdapter <span class="keyword">instanceof</span> HeaderViewListAdapter)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(</span><br><span class="line">        <span class="string">"Cannot add header view to list -- setAdapter has already been called."</span>);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  FixedViewInfo info = <span class="keyword">new</span> FixedViewInfo();</span><br><span class="line">  info.view = v;</span><br><span class="line">  info.data = data;</span><br><span class="line">  info.isSelectable = isSelectable;</span><br><span class="line">  mHeaderViewInfos.add(info);</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// in the case of re-adding a header view, or adding one later on,</span></span><br><span class="line">  <span class="comment">// we need to notify the observer</span></span><br><span class="line">  <span class="keyword">if</span> (mAdapter != <span class="keyword">null</span> &amp;&amp; mDataSetObserver != <span class="keyword">null</span>) &#123;</span><br><span class="line">      mDataSetObserver.onChanged();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//在4.3的系统中</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addHeaderView</span><span class="params">(View v, Object data, <span class="keyword">boolean</span> isSelectable)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> FixedViewInfo info = <span class="keyword">new</span> FixedViewInfo();</span><br><span class="line">  info.view = v;</span><br><span class="line">  info.data = data;</span><br><span class="line">  info.isSelectable = isSelectable;</span><br><span class="line">  mHeaderViewInfos.add(info);</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// Wrap the adapter if it wasn't already wrapped.</span></span><br><span class="line">  <span class="keyword">if</span> (mAdapter != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!(mAdapter <span class="keyword">instanceof</span> HeaderViewListAdapter)) &#123;</span><br><span class="line">    mAdapter = <span class="keyword">new</span> HeaderViewListAdapter(mHeaderViewInfos, mFooterViewInfos, mAdapter);</span><br><span class="line">      &#125;</span><br><span class="line"> </span><br><span class="line">      <span class="comment">// In the case of re-adding a header view, or adding one later on,</span></span><br><span class="line">      <span class="comment">// we need to notify the observer.</span></span><br><span class="line">      <span class="keyword">if</span> (mDataSetObserver != <span class="keyword">null</span>) &#123;</span><br><span class="line">    mDataSetObserver.onChanged();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###3.as查看intent中的extra<br> 在android studio中查看intent的extra，如果直接debug查看intent中的extra时，会发现其mMap为null。只有在getXXXExtra()方法执行后intent中的mMap中才有值。</p>
 
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/SlidingMenu/" rel="tag">#SlidingMenu</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/02/25/WebView 小结/" rel="next" title="WebView小结">
+                <i class="fa fa-chevron-left"></i> WebView小结
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/18/获取View的截图与视图镜像/" rel="prev" title="View的截图与视图镜像">
-                View的截图与视图镜像 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -321,10 +306,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/02/18/slidingmenu实现沉浸式/"
-     data-title="slidingmenu实现沉浸式"
+        <div class="ds-share flat" data-thread-key="2016/03/25/android开发中的一些小坑/"
+     data-title=""
      data-content=""
-     data-url="http://yoursite.com/2016/02/18/slidingmenu实现沉浸式/">
+     data-url="http://yoursite.com/2016/03/25/android开发中的一些小坑/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -351,8 +336,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/18/slidingmenu实现沉浸式/"
-           data-title="slidingmenu实现沉浸式" data-url="http://yoursite.com/2016/02/18/slidingmenu实现沉浸式/">
+      <div class="ds-thread" data-thread-key="2016/03/25/android开发中的一些小坑/"
+           data-title="" data-url="http://yoursite.com/2016/03/25/android开发中的一些小坑/">
       </div>
     
   </div>

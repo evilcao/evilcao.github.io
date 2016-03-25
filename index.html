@@ -232,6 +232,197 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/25/android开发中的一些小坑/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-25T15:46:23+08:00" content="2016-03-25">
+              2016-03-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/25/android开发中的一些小坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/25/android开发中的一些小坑/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          ###1.startActvityForResult跳转直接回调的问题该问题是由于android的机制中认为不同栈中的activity是不能直接交互的，所以activity的lauchmode如果为singleinstance或者singletask那么startActvityForResult在启
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/25/android开发中的一些小坑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/25/WebView 小结/" itemprop="url">
+                  WebView小结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-25T11:09:31+08:00" content="2016-02-25">
+              2016-02-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/25/WebView 小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/25/WebView 小结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>#android调用JS<br>使用webview.loadUrl(String jsstring)来使android调用javascrip方法。这种调用方式是没有返回值的。<br>string的格式为：<br>    有参  javascript:js方法名(‘“+参数1+”‘,’”+参数2+”‘,’” + 参数3+ “”)”<br>    无参  javascript:js方法名()</p>
+<pre><code>注意，一旦调用webview.loadUrl(jsString)方法，webview将会立即尝试调用js，也就是说如果调用该方法时网页还未加载完毕，那么加载调用失败。如果需要在网页加载后传递参数，那个可以webview.setWebViewClient(webViewClient)的onPageFinished(view, url)方法中调用js以传递数据。
+</code></pre><hr>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/25/WebView 小结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/18/获取View的截图与视图镜像/" itemprop="url">
                   View的截图与视图镜像
                 </a>
@@ -284,101 +475,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (width &lt;= <span class="number">0</span> || height &lt;= <span class="number">0</span> ||</span><br><span class="line">         (width * height * (opaque &amp;&amp; !translucentWindow ? <span class="number">2</span> : <span class="number">4</span>) &gt;</span><br><span class="line">                 ViewConfiguration.get(mContext).getScaledMaximumDrawingCacheSize())) &#123;</span><br><span class="line">                destroyDrawingCache();</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/18/获取View的截图与视图镜像/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/18/WebView 小结/" itemprop="url">
-                  WebView小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-18T09:52:14+08:00" content="2016-02-18">
-              2016-02-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/18/WebView 小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/WebView 小结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>#android调用JS<br>使用webview.loadUrl(String jsstring)来使android调用javascrip方法。这种调用方式是没有返回值的。<br>string的格式为：<br>    有参  javascript:js方法名(‘“+参数1+”‘,’”+参数2+”‘,’” + 参数3+ “”)”<br>    无参  javascript:js方法名()</p>
-<pre><code>注意，一旦调用webview.loadUrl(jsString)方法，webview将会立即尝试调用js，也就是说如果调用该方法时网页还未加载完毕，那么加载调用失败。如果需要在网页加载后传递参数，那个可以webview.setWebViewClient(webViewClient)的onPageFinished(view, url)方法中调用js以传递数据。
-</code></pre><hr>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/18/WebView 小结/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -539,7 +635,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -580,6 +676,10 @@
             
               <span class="links-of-author-item">
                 <a href="http://itzhong.github.io/" target="_blank">ZhongZiMing</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://congmingcha.github.io" target="_blank">PanLiMing</a>
               </span>
             
           

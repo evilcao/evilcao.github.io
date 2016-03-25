@@ -61,11 +61,11 @@
 注意，一旦调用webview.loadU">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebView小结">
-<meta property="og:url" content="http://yoursite.com/2016/02/18/WebView 小结/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/02/25/WebView 小结/index.html">
 <meta property="og:site_name" content="CaoJian">
 <meta property="og:description" content="#android调用JS使用webview.loadUrl(String jsstring)来使android调用javascrip方法。这种调用方式是没有返回值的。string的格式为：    有参  javascript:js方法名(‘“+参数1+”‘,’”+参数2+”‘,’” + 参数3+ “”)”    无参  javascript:js方法名()
 注意，一旦调用webview.loadU">
-<meta property="og:updated_time" content="2016-02-18T01:52:14.899Z">
+<meta property="og:updated_time" content="2016-02-25T03:09:31.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebView小结">
 <meta name="twitter:description" content="#android调用JS使用webview.loadUrl(String jsstring)来使android调用javascrip方法。这种调用方式是没有返回值的。string的格式为：    有参  javascript:js方法名(‘“+参数1+”‘,’”+参数2+”‘,’” + 参数3+ “”)”    无参  javascript:js方法名()
@@ -239,8 +239,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-18T09:52:14+08:00" content="2016-02-18">
-              2016-02-18
+            <time itemprop="dateCreated" datetime="2016-02-25T11:09:31+08:00" content="2016-02-25">
+              2016-02-25
             </time>
           </span>
 
@@ -250,8 +250,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/18/WebView 小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/WebView 小结/" itemprop="commentsCount"></span>
+                <a href="/2016/02/25/WebView 小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/25/WebView 小结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -284,6 +284,8 @@
 2. andorid调用js平均需要100-200毫秒，而js调用安卓需要40-50毫秒。
 3. 不要对js接口类做混淆。否则网页将调用不了相关方法。
 </code></pre><hr>
+<p>#注入JS<br>  在安卓中可以向网页注入js后自己调用js。<br>  主要方法为webView.loadUrl(“javascript:” + jsString);其中jsString为完整的js方法。<br>  可以通过将js转化为流后注入也可以直接在代码中写js代码注入。</p>
+<hr>
 <p>#WebViewClient<br>该类主要处理网页的各种通知事件的。<br>主要的方法有：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//该方法在网页加载完毕后回调，此时网页内的js等已经加载完成</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageFinished</span><span class="params">(WebView view, String url)</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">//该方法在网页加载错误后回调</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceivedError</span><span class="params">(WebView view, <span class="keyword">int</span> errorCode, String description, String failingUrl)</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">//是否对链接跳转进行拦截，返回true表示要自己对跳转进行处理。且在此webview内进行加载</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldOverrideUrlLoading</span><span class="params">(WebView view, String url)</span> </span>&#123;</span><br></pre></td></tr></table></figure>
 <pre><code>注意:
@@ -310,16 +312,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/18/slidingmenu实现沉浸式/" rel="next" title="slidingmenu实现沉浸式">
-                <i class="fa fa-chevron-left"></i> slidingmenu实现沉浸式
+              <a href="/2016/02/18/获取View的截图与视图镜像/" rel="next" title="View的截图与视图镜像">
+                <i class="fa fa-chevron-left"></i> View的截图与视图镜像
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/18/获取View的截图与视图镜像/" rel="prev" title="View的截图与视图镜像">
-                View的截图与视图镜像 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/25/android开发中的一些小坑/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -335,10 +337,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/02/18/WebView 小结/"
+        <div class="ds-share flat" data-thread-key="2016/02/25/WebView 小结/"
      data-title="WebView小结"
      data-content=""
-     data-url="http://yoursite.com/2016/02/18/WebView 小结/">
+     data-url="http://yoursite.com/2016/02/25/WebView 小结/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -365,8 +367,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/18/WebView 小结/"
-           data-title="WebView小结" data-url="http://yoursite.com/2016/02/18/WebView 小结/">
+      <div class="ds-thread" data-thread-key="2016/02/25/WebView 小结/"
+           data-title="WebView小结" data-url="http://yoursite.com/2016/02/25/WebView 小结/">
       </div>
     
   </div>
@@ -411,7 +413,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -452,6 +454,10 @@
             
               <span class="links-of-author-item">
                 <a href="http://itzhong.github.io/" target="_blank">ZhongZiMing</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://congmingcha.github.io" target="_blank">PanLiMing</a>
               </span>
             
           
